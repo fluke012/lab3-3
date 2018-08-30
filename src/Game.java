@@ -12,9 +12,38 @@ public class Game {
         while (true){
             printTable();
             input();
+            if(ox.checkWin(col,row)){
+                printTable();;
+                printWin();
+                printscore();
+                ox.reset();
+                continue;
+            }
+            if(ox.isDraw()){
+                printTable();;
+                printDraw();
+                printscore();
+                ox.reset();
+                continue;
+            }
             ox.switchPlayer();
 
+
         }
+    }
+
+    private static void printDraw() {
+        System.out.println("Draw");
+    }
+
+    private static void printWin() {
+        System.out.println(ox.getCurrentPlayer() + " " + "win");
+    }
+
+    private static void printscore() {
+        System.out.println("Score X : " + ox.getScoreX());
+        System.out.println("Score O : " + ox.getScoreO());
+        System.out.println("Score Draw : " + ox.getScoreDraw());
     }
 
     private static void input() {
